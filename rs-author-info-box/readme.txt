@@ -4,7 +4,7 @@ Donate link: rswpthemes.com
 Tags: About Me Widget, Author Bio Widget, Author Info Box, Author Bio, Author Box,
 Requires at least: 4.9
 Tested up to: 6.6
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
