@@ -5,7 +5,7 @@
  * Description:       This widget allow you to display your name, image, title, description, social links, etc in sidebar area. this is plugin is very much compatible with Author Portfolio WordPress Theme.
  * Version:           2.1.0
  * Requires at least: 4.9
- * Requires PHP:      5.6
+ * Requires PHP:      7.1
  * Author:            RS WP THEMES
  * Author URI:        https://rswpthemes.com
  * License:           GPL v2 or later
@@ -32,7 +32,7 @@ function rs_author_info_box_enqueue_assets(){
     $getRswpThemesSlug = get_stylesheet();
 
     $enqueueIcons = true;
-    $rswpThemes = array('book-review-blog', 'book-author-blog', 'author-portfolio-pro', 'electronic-store');
+    $rswpThemes = array( 'book-catalog', 'book-review-blog', 'book-author-blog', 'author-portfolio-pro', 'electronic-store');
     if (in_array($getRswpThemesSlug, $rswpThemes)) {
         $enqueueIcons = false;
     }
