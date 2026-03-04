@@ -1,11 +1,12 @@
 <?php
 /**
- * Plugin Name:       Rs Author Info Box
+ * Plugin Name:       RS Author Info Box
  * Plugin URI:        https://rswpthemes.com/how-to-add-about-me-widget-on-wordpress-step-by-step-guide/
- * Description:       This widget allow you to display your name, image, title, description, social links, etc in sidebar area. this is plugin is very much compatible with Author Portfolio WordPress Theme.
- * Version:           2.1.0
+ * Description:       This widget allows you to display your name, image, title, description, and social links in the sidebar area. It is fully compatible with the Author Portfolio WordPress Theme.
+ * Version:           2.2.0
  * Requires at least: 4.9
- * Requires PHP:      7.1
+ * Tested up to:      6.7
+ * Requires PHP:      7.4
  * Author:            RS WP THEMES
  * Author URI:        https://rswpthemes.com
  * License:           GPL v2 or later
@@ -13,13 +14,14 @@
  * Text Domain:       rs-author-info-box
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if (!defined('RS_AUTHOR_INFO_BOX_PLUGIN_PATH')) {
-    define('RS_AUTHOR_INFO_BOX_PLUGIN_PATH', plugin_dir_path( __file__ ));
+    define('RS_AUTHOR_INFO_BOX_PLUGIN_PATH', plugin_dir_path( __FILE__ ));
 }
 if (!defined('RS_AUTHOR_INFO_BOX_PLUGIN_URL')) {
-    define('RS_AUTHOR_INFO_BOX_PLUGIN_URL', plugin_dir_url( __file__ ));
+    define('RS_AUTHOR_INFO_BOX_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 }
 
 require RS_AUTHOR_INFO_BOX_PLUGIN_PATH . '/includes/author-info-box-widget.php';
@@ -32,7 +34,7 @@ function rs_author_info_box_enqueue_assets(){
     $getRswpThemesSlug = get_stylesheet();
 
     $enqueueIcons = true;
-    $rswpThemes = array( 'book-catalog', 'book-review-blog', 'book-author-blog', 'author-portfolio-pro', 'electronic-store');
+    $rswpThemes = array('book-review-blog', 'book-author-blog', 'author-portfolio-pro', 'electronic-store');
     if (in_array($getRswpThemesSlug, $rswpThemes)) {
         $enqueueIcons = false;
     }

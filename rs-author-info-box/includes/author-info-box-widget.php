@@ -1,13 +1,13 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// Adds widget: Rs Author Info Box
+// Adds widget: RS Author Info Box
 class Rs_Author_Info_Box_Widget extends WP_Widget {
 
 	function __construct() {
 		parent::__construct(
 			'rs_info_box_widget',
-			esc_html__( '[ RSWPTHEMES ] Rs Author Info Box', 'rs-author-info-box' )
+			esc_html__( '[ RSWPTHEMES ] RS Author Info Box', 'rs-author-info-box' )
 		);
 		add_action( 'admin_footer', array( $this, 'media_fields' ) );
 		add_action( 'customize_controls_print_footer_scripts', array( $this, 'media_fields' ) );
@@ -90,7 +90,7 @@ class Rs_Author_Info_Box_Widget extends WP_Widget {
 
 		$displayWidget = true;
 	    if (is_single()) :
-	    	if ('1' === $instance['hide_from_post_page']) {
+	    	if (isset($instance['hide_from_post_page']) && '1' === $instance['hide_from_post_page']) {
     			$displayWidget = false;
 	    	}else{
 	    		$displayWidget = true;
@@ -103,9 +103,9 @@ class Rs_Author_Info_Box_Widget extends WP_Widget {
 $getActivateTheme = get_stylesheet();
 
 	if (true === $displayWidget) :
-		echo $args['before_widget'];
+		echo wp_kses_post($args['before_widget']);
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+			echo wp_kses_post($args['before_title']) . apply_filters( 'widget_title', $instance['title'] ) . wp_kses_post($args['after_title']);
 		}
 			$authorImage = (array_key_exists('author_image', $instance) ? $instance['author_image'] : '');
 			$bannerImage = (array_key_exists('banner_image', $instance) ? $instance['banner_image'] : '');
@@ -187,7 +187,7 @@ $getActivateTheme = get_stylesheet();
 				</div>
 			</div>
 		<?php
-		echo $args['after_widget'];
+		echo wp_kses_post($args['after_widget']);
 	endif;
 	}
 
@@ -235,7 +235,7 @@ $getActivateTheme = get_stylesheet();
 			if ( isset($widget_field['default']) ) {
 				$default = $widget_field['default'];
 			}
-			$widget_value = ! empty( $instance[$widget_field['id']] ) ? $instance[$widget_field['id']] : esc_html__( $default, 'rs-author-info-box' );
+			$widget_value = ! empty( $instance[$widget_field['id']] ) ? $instance[$widget_field['id']] : '';
 			switch ( $widget_field['type'] ) {
 				case 'media':
 					$media_url = '';
@@ -255,16 +255,16 @@ $getActivateTheme = get_stylesheet();
 				case 'checkbox':
 						?>
 						<p>
-							<input class="checkbox" type="checkbox" <?php echo esc_attr(checked( $widget_value, true, false )); ?> id="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $widget_field['id'] ) ); ?>" value="1">
-							<label for="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>"><?php echo esc_attr( $widget_field['label'] ); ?></label>
+							<input class="checkbox" type="checkbox" <?php checked( $widget_value, true ); ?> id="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $widget_field['id'] ) ); ?>" value="1">
+							<label for="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>"><?php echo esc_html( $widget_field['label'] ); ?></label>
 						</p>
 						<?php
 					break;
 				case 'textarea':
 					?>
 					<p>
-						<label for="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>"><?php echo esc_attr( $widget_field['label'] ); ?>:</label>
-						<textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $widget_field['id'] ) );?>" rows="6" cols="6"><?php echo wp_kses_post($widget_value);?></textarea>
+						<label for="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>"><?php echo esc_html( $widget_field['label'] ); ?>:</label>
+						<textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $widget_field['id'] ) );?>" rows="6" cols="6"><?php echo esc_textarea($widget_value);?></textarea>
 					</p>
 					<?php
 					break;
@@ -274,11 +274,11 @@ $getActivateTheme = get_stylesheet();
 					<?php
 					if ('separator' == $widget_field['id']) {
 						?>
-						<h2><?php echo esc_attr($widget_field['label']); ?></h2>
+						<h2><?php echo esc_html($widget_field['label']); ?></h2>
 						<?php
 					}else{
 						?>
-							<label for="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) );?>"><?php echo esc_attr( $widget_field['label']);?>:</label>
+							<label for="<?php echo esc_attr( $this->get_field_id( $widget_field['id'] ) );?>"><?php echo esc_html( $widget_field['label']);?>:</label>
 						<?php
 					}
 					if ('separator' != $widget_field['id']):
@@ -294,10 +294,10 @@ $getActivateTheme = get_stylesheet();
 	}
 
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'rs-author-info-box' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'rs-author-info-box' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'rs-author-info-box' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<?php
@@ -306,17 +306,17 @@ $getActivateTheme = get_stylesheet();
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 		foreach ( $this->widget_fields as $widget_field ) {
 			switch ( $widget_field['type'] ) {
 				case 'media':
-					$instance[$widget_field['id']] = ( ! empty( $new_instance[$widget_field['id']] ) ) ? esc_url( $new_instance[$widget_field['id']] ) : '';
+					$instance[$widget_field['id']] = ( ! empty( $new_instance[$widget_field['id']] ) ) ? esc_url_raw( $new_instance[$widget_field['id']] ) : '';
 				break;
 				case 'textarea':
 					$instance[$widget_field['id']] = ( ! empty( $new_instance[$widget_field['id']] ) ) ? wp_kses_post( $new_instance[$widget_field['id']] ) : '';
 				break;
 				default:
-					$instance[$widget_field['id']] = ( ! empty( $new_instance[$widget_field['id']] ) ) ? strip_tags( $new_instance[$widget_field['id']] ) : '';
+					$instance[$widget_field['id']] = ( ! empty( $new_instance[$widget_field['id']] ) ) ? sanitize_text_field( $new_instance[$widget_field['id']] ) : '';
 			}
 		}
 		return $instance;

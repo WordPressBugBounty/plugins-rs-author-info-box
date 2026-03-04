@@ -1,44 +1,50 @@
-=== AUTHOR INFO BOX - About Me Sidebar Widget WordPress Plugin  ===
-Contributors: RSWPTHEMES
-Donate link: rswpthemes.com
-Tags: About Me Widget, Author Bio Widget, Author Info Box, Author Bio, Author Box,
+=== RS Author Info Box ===
+Contributors: rswpthemes
+Tags: author widget, bio widget, about me widget, author profile
 Requires at least: 4.9
-Tested up to: 6.8
-Stable tag: 2.1.0
-Requires PHP: 7.1
-License: GPLv2 or later
+Tested up to: 6.7
+Stable tag: 2.2.0
+Requires PHP: 7.4
+License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-RS AUTHOR INFO BOX Widget will help to display your author information in sidebar area. this widget allow you to display author name, image, description, and social links.
+A simple and lightweight widget to display an author's name, profile image, short description, and social media links in any sidebar or widget area.
 
 == Description ==
 
-Introducing the **RS Author Info Box - About Me Widget WordPress Plugin**. Create a captivating author profile on your website with ease. Display your name, profession, social links, profile image, and banner image effortlessly. Connect with your audience and establish your personal brand using this user-friendly plugin. Customize the appearance to match your website's aesthetics and ensure a consistent user experience. Take your online presence to the next level and showcase your expertise and credentials with style. Download now and unleash your true potential!
+RS Author Info Box is a functional WordPress plugin designed to easily display professional author profiles within your website's sidebar or widget-ready areas. This simple tool empowers website administrators to build trust and connect with readers by giving a face and brief introduction to the content creators.
 
-**Plugin Features:**
+Key features include:
+* Display author name and professional title.
+* Include a short biographical description.
+* Upload an author profile picture and banner image seamlessly via the WordPress media library.
+* Add common social media profiles (Facebook, Twitter, Instagram, LinkedIn, Pinterest, Goodreads, Wattpad).
+* Option to hide the widget conditionally to suit your theme layouts.
 
- - **Author Name and Profession:** Display your name and profession prominently.
- - **Social Links:** Easily include links to your social profiles for
-   seamless connection with your audience.
- - **Profile Image**: Add a professional headshot or creative avatar to
-   represent yourself.
- - **Banner Image:** Showcase your unique style or branding elements with an
-   eye-catching banner image.
- - **Customization Options:** Customize the appearance to match your
-   website's aesthetics and maintain a consistent user experience.
-
-To learn how to add the **RS WP THEMES Author Info Box - About Me Widget WordPress Plugin** to your website, please watch our informative video guide.
-
-**[How To Add About Me Widget On WordPress?](https://rswpthemes.com/how-to-add-about-me-widget-on-wordpress-step-by-step-guide/)**
-
-[youtube https://www.youtube.com/watch?v=gSPa_OhiKzk]
+Lightweight and flexible, it simply requires adding the widget to your targeted widget area and configuring the straightforward form.
 
 == Installation ==
 
-= From your WordPress dashboard =
+1. Upload the `rs-author-info-box` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Navigate to Appearance > Widgets.
+4. Drag and drop the "RS Author Info Box" widget to a sidebar or widget area.
+5. Fill out the author details, upload images via the integrated media uploader, and save.
 
-1. Visit 'Plugins > Add New'
-2. Search for 'rs-author-info-box'
-3. Activate RS AUTHOR INFO BOX from Plugins page
-4. Go to the Appearance -> Widgets -> and select Rs Author Info Box
-5. And Add Author Information to the sidebar area.
+== Frequently Asked Questions ==
+
+= Does it work with any theme? =
+Yes, it is designed using standard WordPress widget APIs and should be compatible with most standardly-coded themes.
+
+= Can I hide the widget on specific pages? =
+There is a built-in checkbox within the widget settings to easily hide the box on single post pages if you only want it on the homepage snippet or archives.
+
+== Changelog ==
+
+= 2.2.0 =
+* Security and Internationalization code standards update.
+* General escaping and sanitization improvements.
+* Updated standard Plugin check recommendations including PHP 7.4 compatibility.
+
+= 2.1.0 =
+* Minor fixes and enhancements.
