@@ -3,10 +3,10 @@
  * Plugin Name:       RS Author Info Box
  * Plugin URI:        https://rswpthemes.com/how-to-add-about-me-widget-on-wordpress-step-by-step-guide/
  * Description:       This widget allows you to display your name, image, title, description, and social links in the sidebar area. It is fully compatible with the Author Portfolio WordPress Theme.
- * Version:           2.2.0
+ * Version:           2.2.1
  * Requires at least: 4.9
- * Tested up to:      6.7
- * Requires PHP:      7.4
+ * Tested up to:      6.9
+ * Requires PHP:      8.1
  * Author:            RS WP THEMES
  * Author URI:        https://rswpthemes.com
  * License:           GPL v2 or later
@@ -25,6 +25,8 @@ if (!defined('RS_AUTHOR_INFO_BOX_PLUGIN_URL')) {
 }
 
 require RS_AUTHOR_INFO_BOX_PLUGIN_PATH . '/includes/author-info-box-widget.php';
+
+require RS_AUTHOR_INFO_BOX_PLUGIN_PATH . '/includes/class-arc-plugin-promoter.php';
 
 
 add_action('wp_enqueue_scripts', 'rs_author_info_box_enqueue_assets');

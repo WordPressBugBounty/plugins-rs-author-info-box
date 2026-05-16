@@ -2,9 +2,9 @@
 Contributors: rswpthemes
 Tags: author widget, bio widget, about me widget, author profile
 Requires at least: 4.9
-Tested up to: 6.7
-Stable tag: 2.2.0
-Requires PHP: 7.4
+Tested up to: 6.9
+Stable tag: 2.2.1
+Requires PHP: 8.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,9 @@ Yes, it is designed using standard WordPress widget APIs and should be compatibl
 There is a built-in checkbox within the widget settings to easily hide the box on single post pages if you only want it on the homepage snippet or archives.
 
 == Changelog ==
+
+= 2.2.1 =
+* Checked compatibility with latest version
 
 = 2.2.0 =
 * Security and Internationalization code standards update.
